@@ -196,7 +196,6 @@ int main(int argc, char** args)
     result = rtlsdr_set_tuner_gain_mode  (dev,  0);           assert(result >= 0);
     result = rtlsdr_reset_buffer         (dev);               assert(result >= 0);
     result = rtlsdr_set_center_freq      (dev,  FREQUENCY);   assert(result >= 0);
-    //result = rtlsdr_set_freq_correction  (dev,  PPM_ERROR);   assert(result >= 0);
 
     int fbuf_size = MAX_BUF_LEN+FILTER_ORDER;
     int16_t* fbuf = new int16_t[fbuf_size];
@@ -211,6 +210,6 @@ int main(int argc, char** args)
 
 
     rtlsdr_close(dev);
-    delete fbuf;
+    delete [] fbuf;
     return 0;
 }
